@@ -44,14 +44,6 @@ def json_reg():
     return json.dumps({"token": token, "email": email, "code": conf_code, "url": url})  # return to frontend in the same address /json-reg
    #------------------------------------------------------------------------------------ 
     
-   
-@app.route('/')
-def query_example():
-    return 'Todo...'
-
-@app.route('/form-example')
-def formexample():
-    return 'Todo...'
 
 
 if __name__ == '__main__':
