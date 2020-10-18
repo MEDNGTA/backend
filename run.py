@@ -22,7 +22,7 @@ def json_reg():
     username = req_data['username']
     password = req_data['password']  
     password = bcrypt.generate_password_hash(password).decode('utf-8') #remember to crypt password
-    check = bcrypt.check_password_hash(password, uspass)
+    #check = bcrypt.check_password_hash(password, uspass)
     email = req_data['email']
     firstname = req_data['firstname']
     lastname = req_data['lastname']
