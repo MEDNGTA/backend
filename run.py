@@ -29,6 +29,20 @@ def json_reg():
     req_data = request.get_json()      # remember to validate data
     return register.main_route(req_data, bcrypt, db, mail)
     
+<<<<<<< HEAD
+=======
+   
+@app.route('/update-reg', methods=['POST', 'GET'])
+def update_reg():
+ if request.method == 'POST':
+  req_data = request.get_json()      # remember to validate data 
+  return register.reg_conf(req_data, db)
+
+@app.route('/form-example')
+def formexample():
+    return 'Todo...'
+
+>>>>>>> update response to registration
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000) #run app in debug mode on port 5000p
