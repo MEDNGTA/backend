@@ -8,7 +8,7 @@ from random import randint
 import json
 import jwt
 
-#Configure database credentials ------------------------------------------------------
+#Configure database and mail credentials ------------------------------------------------------
 app = Flask(__name__) #create the Flask app
 mail=Mail(app)
 bcrypt = Bcrypt(app)
@@ -29,15 +29,6 @@ def json_reg():
     req_data = request.get_json()      # remember to validate data
     return register.main_route(req_data, bcrypt, db, mail)
     
-   
-@app.route('/')
-def query_example():
-    return 'Todo...'
-
-@app.route('/form-example')
-def formexample():
-    return 'Todo...'
-
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000) #run app in debug mode on port 5000p
