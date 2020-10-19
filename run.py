@@ -30,9 +30,11 @@ def json_reg():
     return register.main_route(req_data, bcrypt, db, mail)
     
    
-@app.route('/')
-def query_example():
-    return 'Todo...'
+@app.route('/update-reg', methods=['POST', 'GET'])
+def update_reg():
+ if request.method == 'POST':
+  req_data = request.get_json()      # remember to validate data 
+  return register.reg_conf(req_data, db)
 
 @app.route('/form-example')
 def formexample():

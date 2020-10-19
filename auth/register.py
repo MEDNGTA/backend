@@ -35,3 +35,11 @@ class register():
     mailing.sendmail_reg(email, conf_code, url, mail)
     return json.dumps({"token": token, "email": email, "code": conf_code, "url": url})  # return to frontend in the same address /json-reg
    #------------------------------------------------------------------------------------ 
+ def reg_conf(req_data, db):
+  token = req_data['token']
+  email = req_data['email'] 
+  user= User.query.filter_by(email=email).first() #select user
+  user.email=email # change later when we change table user to confirmed user attribute
+  user.token=token
+  db.session.commit()
+  return "confirmed users"
