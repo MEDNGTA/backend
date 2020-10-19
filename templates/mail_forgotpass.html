@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <style>
+   @import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital@1&display=swap');
+   *{
+     margin: 0;
+     border: 0;
+     padding: 0;
+   } 
+   body {
+    font-family: 'Anonymous Pro', monospace;
+    font-size: small;
+
+   }
+   .top-container{
+     background-color: #17202A;
+     color: #ECF0F1;
+     margin: auto;
+     width: 100%;
+     height: 50px;
+     padding: 10px;
+   }
+   .message{
+    margin: auto;
+    width: 50%;
+    padding: 10px; 
+   }
+   .logo{
+     margin: 2% 0 0 5%;
+     float: left;
+   }
+   .social {
+     float: none;
+     list-style: none;
+     margin-bottom: 8%;
+   }
+   .social li{
+   display: inline;
+   align-items:center;
+   margin: 2% auto;
+   }
+   .bouton-act {
+     float: left;
+     margin: 0 2% 4% 0;
+   }
+   .btn{
+     float:left;
+     background:#212F3C ;
+     color: #ECF0F1;
+     text-decoration: none;
+     font-weight: 800;
+     padding: 8px 12px;
+     border-radius: 8px;
+   }
+   .btn:hover {
+     background: #ECF0F1 ;
+     color:#212F3C ;
+   }
+   .line {
+     clear: both;
+     height: 2px;
+     background-color: #17202A;
+     margin: 4% auto;
+     width: 80%;
+   }
+   .bottom-container{
+     display:flex;
+     background-color: #17202A;
+     color: #ECF0F1; 
+ 
+   }
+  </style>
+  </head>
+  <body>
+   <div class="top-container">
+    <div class="logo"><img src="logo.jpg" style="height:50px; width:50px;"></div>
+   </div>
+   <div class="message">
+    <p>Hello subscriber,</p><br><br>
+    <p>You could click and change your password </p><br>
+    <div class="bouton-act">
+     <a class="btn" href="{{url}}" target="_blank">Activate Your account</a><br><br>  
+    </div>
+  </div>
+   <div class="line"></div>
+   <div class="bottom-container">
+     <ul class="social">
+       <li><a href="#" target="_blank"><img src="https://thumbs2.imgbox.com/ed/02/d3ZH8p59_t.png" style="height:25px; width:25px;align-items:center;"></a></li>
+       <li><a href="#" target="_blank"><img src="https://thumbs2.imgbox.com/86/e0/kzI8Q0Ey_t.png" style="height:25px; width:25px;align-items:center;"></a></li>
+       <li><a href="#" target="_blank"><img src="https://thumbs2.imgbox.com/94/a7/D3TZLX8j_t.png" style="height:25px; width:25px;align-items:center;"></a></li>
+     </ul>
+   </div>
+
+
+  </body>
+</html>
