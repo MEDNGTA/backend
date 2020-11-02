@@ -1,0 +1,34 @@
+<html>
+    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.1/socket.io.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <head>
+     <title>Document</title>
+   </head>
+   <body>
+      <script language="javascript" type="text/javascript">
+      $(document).ready(function () {
+        var socket = io.connect('http://127.0.0.1:5000');
+         socket.on('connect', function() {
+               console.log('connected to socket');
+               socket.send("user has been connected");
+                                          });                                  
+         socket.on('message', function(msg) {
+               console.log('message :  [ %s ]', msg);    
+                                          });
+         var msg = {"sender":"negutamed"}
+         socket.emit("join-room", "negutamed");
+         console.log('message :  [ %s ]',"negutamed");
+                                          
+                                          });
+        </script>
+        <h2>WebSocket Test</h2>
+
+        <div id="output"></div>
+   </body>
+  </html>
+  
+ 
+          
