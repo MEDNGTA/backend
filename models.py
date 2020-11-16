@@ -78,8 +78,19 @@ class Messages(db.Model):
         backref=db.backref('messages',
                          uselist=True,
                          cascade='delete,all'))
-    
 
+class Profile(db.Model):
+    __tablename__ = 'profile'
+
+    id = db.Column(db.Integer, primary_key=True)
+    tag_name =  db.Column(db.String(50), nullable=False, unique=True)
+    picture = db.Column(db.String(250), nullable=True)
+    birthday = db.Column(db.Date, nullable=False)
+    birthplace = db.Column(db.String(250), nullable=True) # Why we need this? this is weird nobody will accept giving this info
+    nationality = db.Column(db.String(250), nullable=True) # Same as above this is a pets' app not a governemental visa application form
+    sex = db.Column(db.String(50), nullable=True)
+    time_zone = db.Column(db.String(50), nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
 
   #db.create_all() #create all tables
