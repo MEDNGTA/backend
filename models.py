@@ -83,7 +83,6 @@ class Profile(db.Model):
     __tablename__ = 'profile'
 
     id = db.Column(db.Integer, primary_key=True)
-    tag_name =  db.Column(db.String(50), nullable=False, unique=True)
     picture = db.Column(db.String(250), nullable=True)
     birthday = db.Column(db.Date, nullable=False)
     birthplace = db.Column(db.String(250), nullable=True) # Why we need this? this is weird nobody will accept giving this info
