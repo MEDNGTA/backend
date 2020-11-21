@@ -31,11 +31,11 @@ If this step works, the name of your venv will be prepended between parenthesis 
 $ pip install -r requirements.txt
 ```
 6. Create the tables :  
-6.1 Run the python REPL in the base directory:
+  * Run the python REPL in the base directory:
 ```bash
 $ python
 ```
-6.2 In the python REPL execute the following lines: 
+  * In the python REPL execute the following lines: 
 ```python
 >>> from models import db
 >>> create_all()
