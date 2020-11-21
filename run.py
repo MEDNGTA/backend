@@ -21,6 +21,10 @@ app.register_blueprint(auth_bp)
 from auth.acc import acc as acc_bp
 app.register_blueprint(acc_bp)
 
+
+from profile.profile import profile as profile_bp
+app.register_blueprint(profile_bp)
+
 # from resources.chat import chat as chat_bp
 # app.register_blueprint(chat_bp)
 
