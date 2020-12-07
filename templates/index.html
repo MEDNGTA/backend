@@ -20,6 +20,7 @@
                                           });
          var msg = {sender:"othkada", reciever:"negutamed"}
          socket.emit("create-room",{sender:"othkada", reciever:"negutamed"});
+         socket.emit("conversation",{sender:"othkada", reciever:"negutamed", content:"hello my friend"});
          console.log('message :  [ %s ]', msg.reciever);
                                           });
         </script>

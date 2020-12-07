@@ -1,14 +1,13 @@
 
 from flask import Flask,jsonify, request, abort
 from marshmallow import Schema, fields, pre_load, validate
-from config import config
+from config import app, mail, db, socketio, bcrypt
 from flask_marshmallow import Marshmallow
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy import ForeignKey
 from sqlalchemy.dialects.postgresql import JSONB
 
-app = Flask(__name__) #create the Flask app
-(mail, bcrypt, db, app, socketio) = config.credit(app)
+   #(mail, bcrypt, db, app, socketio) = config.credit(app)
    #you can put value app in creation of tables 
 
 
@@ -22,18 +21,7 @@ class Users(db.Model):
     firstname = db.Column(db.String(250))
     lastname = db.Column(db.String(250))
     phonenumber = db.Column(db.String(250))
-    token = db.Column(db.String(250))
-    #sessions = db.relationship("Session", backref="usefrom")
-
-    # def __init__(self, username, password, email, firstname, lastname, phonenumber, token):
-    #     self.username = username
-    #     self.password = password
-    #     self.email = email
-    #     self.firstname = firstname
-    #     self.lastname = lastname
-    #     self.phonenumber = phonenumber
-    #     self.token = token
-
+    
     
 
 
@@ -55,7 +43,7 @@ class Chatevents(db.Model):
     users_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     userevt = db.relationship(
         Users,
-        backref=db.backref('chatroom',
+        backref=db.backref('chatevent',
                          uselist=True,
                          cascade='delete,all'))
     chatroom_id = db.Column(db.Integer, db.ForeignKey("chatroom.id"))
@@ -81,6 +69,29 @@ class Messages(db.Model):
                          cascade='delete,all'))
     
 
+class Tokens(db.Model):
+    __tablename__ = 'token'
 
+    id = db.Column(db.Integer, primary_key=True)
+    token = db.Column(db.String(250), unique=True, nullable=False)
+    expire_t = db.Column(db.DateTime, nullable=False)
+    create_t = db.Column(db.DateTime, nullable=False)
+    refrechToken = db.Column(db.String(250), unique=True, nullable=False)
+    expire_rt = db.Column(db.DateTime, nullable=False)
+    create_rt = db.Column(db.DateTime, nullable=False)
+    users_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    usertkn = db.relationship(
+        Users,
+        backref=db.backref('token',
+                         uselist=True,
+                         cascade='delete,all'))
+
+class Sessions(db.Model):
+    __tablename__ = 'session'
+
+    id = db.Column(db.Integer, primary_key=True)
+    opening_date = db.Column(db.String(250), unique=True, nullable=False)
+    closing_date = db.Column(db.DateTime, nullable=False)
+    
 
   #db.create_all() #create all tables
