@@ -1,13 +1,10 @@
 from flask import Blueprint, request, Flask, jsonify
-from flask_mail import *
-from flask_cors import *
 from models import Users,db,Tokens
 from flask_bcrypt import check_password_hash
 from resources.mailing import mailing
 from flask_login import login_required, LoginManager, current_user,logout_user
 from random import randint
 from config import app, mail, db, socketio, bcrypt
-from flask_socketio import SocketIO
 import json
 import jwt
 import datetime
