@@ -1,3 +1,4 @@
+
 from flask import Blueprint, request, Flask, url_for, send_from_directory
 from models import Profile, db
 from config import config
@@ -42,9 +43,27 @@ def profile_image():
             return {"error": True, "message": "Bad request, no file selected"}, 400
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))            
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
             return {"file_url": url_for('profile.uploaded_file', filename=filename, _external = True)}
         elif not allowed_file(file.filename):
             return { "error": True, "message": "File type not supported, allowed extensions: " + ', '.join(ALLOWED_EXTENSIONS)}, 400
 
+@profile.route('/profile')
+def set_profile_data():
+    if request.method == 'POST':
+        req_data = request.get_json()      # remember to validate data
+        birthday = req_data['birthday']
+        birthplace = req_data['birthplace']
+        nationality = req_data['nationality']
+        sex = req_data['sex']
+        timezone = req_data['timezone']
+        language = req_data['language']
+        user_id = req_data['user_id'] #verify that this is the current user's ID, maybe with the tokens
 
+        profile_exists = Profile.query.filter_by(user_id=user_id).all()
+
+        if profile_exists :
+            return {"error" : True, "message": "Profile already exists, use http method PUT to modify it"}
+
+        return {"error" : False, "message": "Profile created", "profile": profile}
