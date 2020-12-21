@@ -66,4 +66,8 @@ def set_profile_data():
         if profile_exists :
             return {"error" : True, "message": "Profile already exists, use http method PUT to modify it"}
 
+        profile = Profile (birthday=birthday, birthplace=birthplace, nationality=nationality, sex=sex, time_zone=time_zone, language=language, user_id = user_id)
+        db.session.add(profile)
+        db.session.commit()
+
         return {"error" : False, "message": "Profile created", "profile": profile}
