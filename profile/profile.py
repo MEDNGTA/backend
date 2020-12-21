@@ -71,3 +71,14 @@ def set_profile_data():
         db.session.commit()
 
         return {"error" : False, "message": "Profile created", "profile": profile}
+
+@profile.route('/profile', methods=['GET'])
+def get_profile_data_by_profile_id():
+    req_data = request.get_json()
+    id = req_data['id']
+
+    profile = Profile.query.filter_by(id=id).first()
+    if profile:
+        return {"error" : False, "message": "Profile found", "profile": profile}
+    else:
+        return {"error" : True, "message": "Profile not found"}
