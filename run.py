@@ -5,25 +5,15 @@ from config import app, mail, db, socketio, bcrypt
 from flask_socketio import SocketIO,emit,send
 from flask_marshmallow import Marshmallow
 from flask_login import login_required, LoginManager, current_user,logout_user
-from flask_socketio import SocketIO
 from random import randint
 import datetime
 
-
-        #create the Flask app
-# login_manager = LoginManager()
-# login_manager.init_app(app)
-#(mail, bcrypt, db, app, socketio) = config.credit(app)
-
-
-from auth.auth import auth as auth_bp
+from auth.auth import auth as auth_bp #auth bleuprint
 app.register_blueprint(auth_bp)
 
-from auth.acc import acc as acc_bp
+from auth.acc import acc as acc_bp    #acc bleuprint
 app.register_blueprint(acc_bp)
 
-# from resources.chat import chat as chat_bp
-# app.register_blueprint(chat_bp)
 
 @socketio.on("create-room")
 def chatroomfun(data):

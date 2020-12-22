@@ -21,6 +21,7 @@ class Users(db.Model):
     firstname = db.Column(db.String(250))
     lastname = db.Column(db.String(250))
     phonenumber = db.Column(db.String(250))
+    confUser = db.Column(db.Boolean, nullable=False)
     
     
 
