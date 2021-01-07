@@ -59,10 +59,6 @@ def conversation(data):
         return "bad socket conversation"
 
 
-
-
-
-
 @socketio.on("message")
 def handleMessage(msg):
     print("\n\nmessage : "+ msg+"\n\n")
