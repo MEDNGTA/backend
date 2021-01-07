@@ -14,7 +14,6 @@ app = Flask(__name__) #create the Flask app
 
 class User(db.Model):
     __tablename__ = 'users'
-
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(250), unique=True, nullable=False)
     password = db.Column(db.String(250), nullable=False)
@@ -81,7 +80,6 @@ class Messages(db.Model):
 
 class Profile(db.Model):
     __tablename__ = 'profile'
-
     id = db.Column(db.Integer, primary_key=True)
     picture = db.Column(db.String(250), nullable=True)
     birthday = db.Column(db.Date, nullable=False)
@@ -91,5 +89,26 @@ class Profile(db.Model):
     time_zone = db.Column(db.String(50), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
+class Event(db.Model):
+    __tablename__ = 'event'
+    id = db.Column(db.Integer, primary_key=True)
+    code = db.Column(db.String(250), nullable=True)
+    datetime = db.Column(db.Date, nullable=False) #event date
+    time_zone = db.Column(db.String(50), nullable=True)
+    latitude = db.Column(db.Double, nullable=False)
+    longitude = db.Column(db.Double, nullable=False )
+    status = db.Column(db.String(50), nullable=False) #actif / inactif
+    type = db.Column(db.String(50), nullable=False) #rescue / walk/ talkih
+    description = db.Column(db.String(250), nullable=True)
+
+class Participant(db.Model):
+    __tablename__ = 'participant'
+    id = db.Column(db.Integer, primary_key=True)
+    datetime = db.Column(db.Date, nullable=False) #joining date
+    latitude = db.Column(db.Double, nullable=False) #trick to get users home adress))
+    longitude = db.Column(db.Double, nullable=False) #trick to get users home adress))
+    type = db.Column(db.String(50), nullable=True) #admin /organiser / participant/other
+    id_event = db.Column(db.Integer, db.ForeignKey("event.id"))
+    id_user = db.Column(db.Integer, db.ForeignKey("users.id"))
 
   #db.create_all() #create all tables

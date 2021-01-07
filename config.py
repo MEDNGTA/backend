@@ -26,6 +26,5 @@ class config():
        app.config["Access-Control-Allow-Origin"] = "http://127.0.0.1:5000"
        socketio = SocketIO(app, cors_allowed_origins="*")
        return mail, bcrypt, db, app, socketio
-    
-    
+
     

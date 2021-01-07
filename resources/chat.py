@@ -6,7 +6,6 @@
 # from random import randint
 # import datetime
 
-
 # if __name__ == "resources.chat" :
 #    app = Flask(__name__)
 #    chat = Blueprint("chat", __name__)

@@ -9,7 +9,6 @@ from flask_socketio import SocketIO
 from random import randint
 import datetime
 
-
 app = Flask(__name__)      
 app.config['SECRET_KEY'] = 'mysecret'           #create the Flask app
 (mail, bcrypt, db, app, socketio) = config.credit(app)
@@ -45,11 +44,6 @@ def chatroomfun(data):
     db.session.add(chatevent)
     db.session.commit()
     return "success !!! " 
-    
-
-
-
-
 
 @socketio.on("message")
 def handleMessage(msg):

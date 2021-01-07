@@ -57,7 +57,7 @@ def set_profile_data():
         birthplace = req_data['birthplace']
         nationality = req_data['nationality']
         sex = req_data['sex']
-        timezone = req_data['timezone']
+        time_zone = req_data['timezone']
         language = req_data['language']
         user_id = req_data['user_id'] #verify that this is the current user's ID, maybe with the tokens
 
