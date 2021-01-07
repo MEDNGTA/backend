@@ -1,0 +1,5 @@
+# This directory should stay empty on the repo
+# so, all files here are ignored
+*
+# except for this file
+!.gitignore
